@@ -2,8 +2,11 @@ from scapy import *
 from scapy.all import sniff
 import pyx
 
+# Recibe la cantidad de paquetes que se desean analizar:
+cantCaptures = int(input("Ingrese la cantidad de capturas deseadas: \n"))
+
 # Captura Sencilla de Datos:
-simpleCapture = sniff(count=3, filter="tcp")
+simpleCapture = sniff(count=cantCaptures)
 
 # Exportar Datos de los Paquetes como PDF
 simpleCapture.pdfdump("pruebaExp.pdf")
@@ -13,5 +16,3 @@ simpleCapture.summary()
 
 # Mostrar Información Completa de los paquetes:
 simpleCapture[0].show()
-
-# capture = sniff(count=5, filter="tcp", prn=lambda x: x.show())
